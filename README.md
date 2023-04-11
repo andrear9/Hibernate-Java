@@ -1,6 +1,6 @@
-## Hibernate Java 11/04
+# Hibernate Java 11/04
 
-HIBERNATE
+## HIBERNATE
 
 <p>Hibernate è un ecosistema di librerie: la principale è Hibernate ORM, framework open source di Object Relational Mapping. Si tratta di un framework Java per mappare modelli di dominio orientati agli oggetti su un database relazionale. Sostanzialmente Hibernate viene usato per rendere persistenti i dati dall'ambiente Java al database.
 Attraverso l’utilizzo di un framework come Hibernate lo sviluppatore non dovrà più preoccuparsi di gestire la persistenza dei dati e le procedure per le operazioni CRUD dei database (Create, Read, Update, Delete) saranno molto più facili.</p>
@@ -15,7 +15,7 @@ JPA è una specifica (ovvero un insieme di interfacce) Java per mappare una clas
 •	fornisce un linguaggio per effettuare query SQL, chiamato HQL (Hibernate Query Language), che è indipendente dalla DBMS utilizzato
 •	fornisce varie API per la gestione e manipolazioni degli oggetti Java che mappano le tabelle del database.
 
-Mapping
+## Mapping
 La mappatura (mapping) tra le classi Java e le tabelle del database è fornito da un file XML o attraverso la Java Annotations definite dalle JPA (Java Persistence API) per la persistenza dei dati. 
 Queste annotations vengono inserite direttamente nelle entities ovvero le classi che verranno mappate sulle tabelle del database.
 •	@Entity: per indicare che la classe deve essere trattate come un bean (quindi dovrà avere un costruttore senza argomenti con una visibilità almeno protected);
@@ -25,7 +25,7 @@ Queste annotations vengono inserite direttamente nelle entities ovvero le classi
 •	@OneToOne, @ManyToOne, @OneToMany, @ManyToMany: per gestire le relazioni tra le tabelle
 
  
-Hibernate Lifecycle
+## Hibernate Lifecycle
 
 Un oggetto in Hibernate esiste in uno dei seguenti stati: Transient, Persistent, Removed, Detached.
 
