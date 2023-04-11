@@ -13,7 +13,7 @@ public class HibernateUtils {
 	private static SessionFactory buildSessionFactory() {
 		try {
 			// load from different directory
-			File f = new File("C:\\ws-itspiemonte\\2023\\my-hibernate\\src\\main\\resources\\hibernate.cfg.xml");
+			File f = new File("C:\\Users\\ricci\\Documents\\javans\\java 11-04\\my-hibernate\\src\\main\\resources\\hibernate.cfg.xml");
 			SessionFactory sessionFactory = new Configuration().configure(f)
 					.buildSessionFactory();
 
