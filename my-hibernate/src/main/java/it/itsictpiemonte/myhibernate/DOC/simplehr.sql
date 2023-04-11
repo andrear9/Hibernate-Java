@@ -1,0 +1,165 @@
+CREATE DATABASE IF NOT EXISTS simplehr;
+USE simplehr;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella DEPARTMENT
+--
+
+CREATE TABLE DEPARTMENT (
+  DEPT_ID int NOT NULL,
+  DEPT_NAME varchar(255) NOT NULL,
+  DEPT_NO varchar(20) NOT NULL,
+  LOCATION varchar(255) DEFAULT NULL
+) ENGINE=InnoDB ;
+
+--
+-- Dump dei dati per la tabella DEPARTMENT
+--
+
+INSERT INTO DEPARTMENT (DEPT_ID, DEPT_NAME, DEPT_NO, LOCATION) VALUES
+(10, 'ACCOUNTING', 'D10', 'CHICAGO'),
+(20, 'RESEARCH', 'D20', 'DALLAS'),
+(30, 'SALES', 'D30', 'CHICAGO'),
+(40, 'OPERATIONS', 'D40', 'BOSTON');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella EMPLOYEE
+--
+
+CREATE TABLE EMPLOYEE (
+  EMP_ID bigint NOT NULL,
+  EMP_NAME varchar(50) NOT NULL,
+  EMP_NO varchar(20) NOT NULL,
+  HIRE_DATE date NOT NULL,
+  JOB varchar(30) NOT NULL,
+  SALARY float NOT NULL,
+  DEPT_ID int NOT NULL,
+  MNG_ID bigint DEFAULT NULL
+) ENGINE=InnoDB  ;
+
+--
+-- Dump dei dati per la tabella EMPLOYEE
+--
+
+INSERT INTO EMPLOYEE (EMP_ID, EMP_NAME, EMP_NO, HIRE_DATE, JOB, SALARY, DEPT_ID, MNG_ID) VALUES
+(7369, 'SMITH', 'E7369', '1980-12-17', 'CLERK', 800, 20, 7902),
+(7499, 'ALLEN', 'E7499', '1981-02-20', 'SALESMAN', 1600, 30, 7698),
+(7521, 'WARD', 'E7521', '1981-02-22', 'SALESMAN', 1250, 30, 7698),
+(7566, 'JONES', 'E7566', '1981-04-02', 'MANAGER', 2975, 20, 7839),
+(7654, 'MARTIN', 'E7654', '1981-09-28', 'SALESMAN', 1250, 30, 7698),
+(7698, 'BLAKE', 'E7698', '1981-05-01', 'MANAGER', 2850, 30, 7839),
+(7782, 'CLARK', 'E7782', '1981-06-09', 'MANAGER', 2450, 30, 7839),
+(7788, 'SCOTT', 'E7788', '1987-04-19', 'ANALYST', 3000, 20, 7566),
+(7839, 'KING', 'E7839', '1981-11-17', 'PRESIDENT', 5000, 10, NULL),
+(7844, 'TURNER', 'E7844', '1981-09-08', 'SALESMAN', 1500, 30, 7698),
+(7876, 'ADAMS', 'E7876', '1987-05-23',  'CLERK', 1100, 20, 7698),
+(7900, 'ADAMS', 'E7900', '1981-12-03',  'CLERK', 950, 30, 7698),
+(7902, 'FORD', 'E7902', '1981-12-03',  'ANALYST', 3000, 20, 7566),
+(7934, 'MILLER', 'E7934', '1982-01-23',  'CLERK', 1300, 10, 7698);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella SALARY_GRADE
+--
+
+CREATE TABLE SALARY_GRADE (
+  GRADE int NOT NULL,
+  HIGH_SALARY float NOT NULL,
+  LOW_SALARY float NOT NULL
+) ENGINE=InnoDB  ;
+
+--
+-- Dump dei dati per la tabella SALARY_GRADE
+--
+
+INSERT INTO SALARY_GRADE (GRADE, HIGH_SALARY, LOW_SALARY) VALUES
+(1, 9999, 3001);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella TIMEKEEPER
+--
+
+CREATE TABLE TIMEKEEPER (
+  Timekeeper_Id int NOT NULL,
+  Date_Time datetime NOT NULL,
+  In_Out char(1) NOT NULL,
+  EMP_ID bigint NOT NULL
+) ENGINE=InnoDB  ;
+
+--
+-- Dump dei dati per la tabella TIMEKEEPER
+--
+
+INSERT INTO TIMEKEEPER (Timekeeper_Id, Date_Time, In_Out, EMP_ID) VALUES
+(1, '2022-06-06 19:01:56', 'I', 7499),
+(2, '2022-06-06 19:02:50', 'I', 7499);
+
+--
+-- Indici per le tabelle scaricate
+--
+
+--
+-- Indici per le tabelle DEPARTMENT
+--
+ALTER TABLE DEPARTMENT
+  ADD PRIMARY KEY (DEPT_ID),
+  ADD UNIQUE KEY DEPT_NO (DEPT_NO);
+
+--
+-- Indici per le tabelle EMPLOYEE
+--
+ALTER TABLE EMPLOYEE
+  ADD PRIMARY KEY (EMP_ID),
+  ADD UNIQUE KEY EMP_NO (EMP_NO),
+  ADD KEY FK75C8D6AE269A3C9 (DEPT_ID),
+  ADD KEY FK75C8D6AE6106A42 (EMP_ID),
+  ADD KEY FK75C8D6AE13C12F64 (MNG_ID);
+
+--
+-- Indici per le tabelle SALARY_GRADE
+--
+ALTER TABLE SALARY_GRADE
+  ADD PRIMARY KEY (GRADE);
+
+--
+-- Indici per le tabelle TIMEKEEPER
+--
+ALTER TABLE TIMEKEEPER
+  ADD PRIMARY KEY (Timekeeper_Id),
+  ADD KEY FK744D9BFF6106A42 (EMP_ID);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella TIMEKEEPER
+--
+ALTER TABLE TIMEKEEPER
+  MODIFY Timekeeper_Id int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella EMPLOYEE
+--
+ALTER TABLE EMPLOYEE
+  ADD CONSTRAINT FK75C8D6AE13C12F64 FOREIGN KEY (MNG_ID) REFERENCES EMPLOYEE (EMP_ID),
+  ADD CONSTRAINT FK75C8D6AE269A3C9 FOREIGN KEY (DEPT_ID) REFERENCES DEPARTMENT (DEPT_ID),
+  ADD CONSTRAINT FK75C8D6AE6106A42 FOREIGN KEY (EMP_ID) REFERENCES EMPLOYEE (EMP_ID);
+
+--
+-- Limiti per la tabella TIMEKEEPER
+--
+ALTER TABLE TIMEKEEPER
+  ADD CONSTRAINT FK744D9BFF6106A42 FOREIGN KEY (EMP_ID) REFERENCES EMPLOYEE (EMP_ID);
+
