@@ -2,9 +2,9 @@
 
 HIBERNATE
 
-Hibernate è un ecosistema di librerie: la principale è Hibernate ORM, framework open source di Object Relational Mapping. Si tratta di un framework Java per mappare modelli di dominio orientati agli oggetti su un database relazionale. Sostanzialmente Hibernate viene usato per rendere persistenti i dati dall'ambiente Java al database.
-Attraverso l’utilizzo di un framework come Hibernate lo sviluppatore non dovrà più preoccuparsi di gestire la persistenza dei dati e le procedure per le operazioni CRUD dei database (Create, Read, Update, Delete) saranno molto più facili.
-Hibernate fornisce il mapping tra le classi Java e le tabelle di un database relazionale e attraverso di esso viene gestito il salvataggio e la lettura dei dati.
+<p>Hibernate è un ecosistema di librerie: la principale è Hibernate ORM, framework open source di Object Relational Mapping. Si tratta di un framework Java per mappare modelli di dominio orientati agli oggetti su un database relazionale. Sostanzialmente Hibernate viene usato per rendere persistenti i dati dall'ambiente Java al database.
+Attraverso l’utilizzo di un framework come Hibernate lo sviluppatore non dovrà più preoccuparsi di gestire la persistenza dei dati e le procedure per le operazioni CRUD dei database (Create, Read, Update, Delete) saranno molto più facili.</p>
+<p>Hibernate fornisce il mapping tra le classi Java e le tabelle di un database relazionale e attraverso di esso viene gestito il salvataggio e la lettura dei dati.</p>
 •	non stravolge il paradigma Object-Oriented di Java e di conseguenza permette l’uso dell’eredarietà, del polimorfismo, le associazioni, le collections.
 •	è altamente personalizzabile e estendibile;
 •	è portabile su tutti i database di tipo SQL (Oracle, PostgreSQL, SQL Server, MySQL ...); 
